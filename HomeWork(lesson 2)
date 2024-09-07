@@ -6,10 +6,10 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 
-# get the path to the ChromeDriver executable
+
 driver_path = ChromeDriverManager().install()
 
-# create a new Chrome browser instance
+
 service = Service(driver_path)
 driver = webdriver.Chrome(service=service)
 driver.maximize_window()
@@ -19,28 +19,28 @@ sleep(10)
 # Amazon logo
 driver.find_element(By.XPATH, "//i[@class='a-icon a-icon-logo']")
 
-# Email field
+
 driver.find_element(By.ID, 'ap_email')
 
-# Continue button
+
 driver.find_element(By.ID, 'continue')
 
-# Conditions of use link
+
 driver.find_element(By.LINK_TEXT, "Conditions of Use")
 
-# Privacy Notice link
+
 driver.find_element(By.LINK_TEXT, "Privacy Notice")
 
-# Need help link
+
 driver.find_element(By.XPATH, "//span[@class='a-expander-prompt']")
 
-# Forgot your password link
+
 driver.find_element(By.ID, 'auth-fpp-link-bottom')
 
-# Other issues with Sign-In link
+
 driver.find_element(By.ID, 'ap-other-signin-issues-link')
 
-# Create your Amazon account button
+
 driver.find_element(By.ID, 'createAccountSubmit')
 
 driver.quit()
@@ -62,30 +62,31 @@ from time import sleep
 
 from TargetSearch import expected_result
 
-# Get the path to the ChromeDriver executable
+
 driver_path = ChromeDriverManager().install()
 
-# Create a new Chrome browser instance
+
 service = Service(driver_path)
 driver = webdriver.Chrome(service=service)
 driver.maximize_window()
 
-# Open Target website
+
 driver.get('https://www.target.com/')
 
-# Navigate to Sign In page
+
 driver.find_element(By.XPATH, "//a[@data-test='@web/AccountLink']").click()
 driver.find_element(By.XPATH, "//a[@data-test='accountNav-signIn']").click()
 sleep(5)
-# Actual Result
+
+
 actual_result = driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']").text
 
-# Expected Result
+
 expected_result = 'Sign into your Target account'
 
 assert expected_result in actual_result, f'Expected "{expected_result}" but got "{actual_result}"'
 
-# Check if login form is present
+
 login_present = driver.find_element(By.ID, 'login')
 
 if login_present:
